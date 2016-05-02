@@ -1,0 +1,50 @@
+/*	Author: Caleb A. Payton
+ * 
+ * 	Rock, Paper, Scissors
+ * 	
+ * 	Program simulates a rock, paper, scissors game against the computer,
+ * 	with the computers choice being random. Utilizes JOptionPane to produce
+ * 	dialog boxes for the game-play. 
+ * 	Allows user the option to continue playing after each match.
+ */
+
+import javax.swing.JOptionPane;
+import java.util.Random;
+
+public class RockPaperScissors {
+	public static void main(String[] args) {
+		
+		int Rock = 0;
+		int Paper = 1;
+		int Scissors = 2;
+		String choice;
+		int computer;
+		int keepPlaying = JOptionPane.YES_OPTION;
+		
+		while(keepPlaying == JOptionPane.YES_OPTION) {
+			
+		Random rand = new Random();
+		
+		choice = JOptionPane.showInputDialog("Rock, Paper, or Scissors? ");
+		
+		computer = rand.nextInt(3);
+		if(computer == Rock)
+			JOptionPane.showMessageDialog(null, "Computer chose:\nrock!");
+		else if(computer == Paper)
+			JOptionPane.showMessageDialog(null, "Computer chose:\npaper");
+		else
+			JOptionPane.showMessageDialog(null, "Computer chose:\nscissors");
+		
+		if((choice.equals("rock")&&computer==Rock) || (choice.equals("paper")&&computer==Paper) || (choice.equals("scissors")&&computer==Scissors))
+			JOptionPane.showMessageDialog(null, "Tie!");
+		else if((choice.equals("rock")&&computer==Scissors) || (choice.equals("paper")&&computer==Rock) || (choice.equals("scissors")&&computer==Paper))
+			JOptionPane.showMessageDialog(null, "You win!");
+		else if((choice.equals("rock")&&computer==Paper) || (choice.equals("paper")&&computer==Scissors) || (choice.equals("scissors")&&computer==Rock))
+			JOptionPane.showMessageDialog(null, "Computer wins!");
+		else
+			JOptionPane.showMessageDialog(null, "Your choice didn't make sense!");
+		
+		keepPlaying = JOptionPane.showConfirmDialog(null, "Keep Playing?");
+		}
+	}
+}
